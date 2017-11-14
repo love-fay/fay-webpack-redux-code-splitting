@@ -1,9 +1,7 @@
 /**
  * Created by feichongzheng on 16/12/18.
  */
-
-import 'node-waves/src/less/waves.less';
-import React, {Component} from 'react';
+import React from 'react';
 import {Router, Switch, Route} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import Bundle from '../bundle/components/Bundle';
@@ -80,26 +78,16 @@ const Layout12 = (props) => (
     </Bundle>
 );
 
-export default class Main extends Component {
-
-    constructor (props) {
-        super(props);
-    }
-
-    render () {
-        return <Router history={history}>
-                <Switch>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/504" component={E504} />
-                    <Route path='/404' component={E404} />
-                    <Route path='/401D3' component={E401D3} />
-                    <Route path="/" component={Layout12}/>
-                </Switch>
-            </Router>;
-    }
-
-    loggedIn = () => {
-        let user = cookie.load('current-user');
-        return typeof (user) === 'object';
-    };
+export default () => {
+    return (
+        <Router history={history}>
+            <Switch>
+                <Route path="/login" component={Login}/>
+                <Route path="/504" component={E504} />
+                <Route path='/404' component={E404} />
+                <Route path='/401D3' component={E401D3} />
+                <Route path="/" component={Layout12}/>
+            </Switch>
+        </Router>
+    );
 }

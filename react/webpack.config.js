@@ -34,15 +34,6 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
                 loader: 'file'
             },
-            //SASS需要根据本地机器环境安装
-            // {
-            //     test: /\.sass/,
-            //     loader: 'style!css!sass'
-            // },
-            // {
-            //     test: /\.scss/,
-            //     loader: 'style!css!sass'
-            // },
             {
                 test: /\.less$/,
                 loader: 'style!css!less'
@@ -65,7 +56,6 @@ module.exports = {
         new CopyWebpackPlugin([
             {from: __dirname + '/src/assets', to: __dirname+"/public/assets"},
             {from: __dirname + '/src/favicon.ico', to: __dirname +'/public/favicon.ico'},
-            {from: __dirname + '/src/faylogin.html', to: __dirname +'/public/faylogin.html'},
         ]),
         new HtmlWebpackPlugin({
             template: __dirname + "/src/index.html"//new 一个这个插件的实例，并传入相关的参数
@@ -77,7 +67,7 @@ module.exports = {
         outputPath: path.join(__dirname, 'public'),
         host: "0.0.0.0",//本地IP和localhost都可以用
         contentBase: "./public",//本地服务器所加载的页面所在的目录
-        port: "3000",
+        port: "8000",
         colors: true,//终端中输出结果为彩色
         historyApiFallback: true,//不跳转
         inline: true//实时刷新

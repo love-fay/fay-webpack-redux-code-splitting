@@ -1,5 +1,9 @@
 # webstorm
 .idea/
 react/node_modules/
+react/not-code-splitting/node_modules/
 react-rr4/node_modules/
+react-rr4/not-code-splitting/node_modules/
 react-rr4-redux/node_modules/
+react-rr4-redux/not-code-splitting/node_modules/
+

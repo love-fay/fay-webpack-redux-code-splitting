@@ -13,10 +13,10 @@ const cssnanoFromPostcss = require('cssnano');
 
 module.exports = {
 
-    entry: ['babel-polyfill', __dirname + '/src/main.js'], // 已多次提及的唯一入口文件
+    entry: ['babel-polyfill', __dirname + '/src/main.js'],
     output: {
-        path: __dirname + '/public', // 打包后的文件存放的地方
-        filename: 'js/[name].[hash:8].bundle.js', // 打包后输出文件的文件名
+        path: __dirname + '/public',
+        filename: 'js/[name].[hash:8].bundle.js',
         chunkFilename: 'js/[name]-[id].[hash:8].bundle.js',
     },
     externals:[
@@ -100,7 +100,6 @@ module.exports = {
                     }, {
                         loader: 'less-loader',
                     }],
-                    // use style-loader in development
                     fallback: 'style-loader',
                 }),
             },
@@ -142,7 +141,6 @@ module.exports = {
         new CopyWebpackPlugin([
             {from: __dirname + '/src/assets', to: __dirname + '/public/assets'},
             {from: __dirname + '/src/favicon.ico', to: __dirname + '/public/favicon.ico'},
-            {from: __dirname + '/src/faylogin.html', to: __dirname + '/public/faylogin.html'},
         ]),
         new webpack.DefinePlugin({
             'process.env': {
@@ -165,11 +163,10 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         compress: true,
-        // host: "0.0.0.0",//本地IP和localhost都可以用
-        host: '192.168.0.200',
+        host: "0.0.0.0",
         port: '8000',
-        historyApiFallback: true, // 不跳转
-        inline: true, // 内联模式
+        historyApiFallback: true,
+        inline: true,
         hot: true,
         hotOnly: true,
     },
