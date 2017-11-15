@@ -42,13 +42,6 @@ const reqPostBrace = (method, params = {}) => {
 const promise = (req) => {
     return new Promise(function(resolve, reject) {
                 fetch(req).then( (res) => {
-                    const status = res.status;
-                    if (status === 4011) {
-                        console.log(res);
-                        // FayUc.logout(() => {
-                        //     window.location.href = '/login';
-                        // });
-                    }
                     resolve(res);
                     }).catch( (err) => {
                         reject(err);

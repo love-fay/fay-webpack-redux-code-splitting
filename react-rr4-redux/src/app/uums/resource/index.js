@@ -3,8 +3,10 @@
  */
 import AModal from './views/aModal';
 import {view as Privilege} from './privilege';
+import * as api from './api';
 
 export {
     AModal,
-    Privilege
+    Privilege,
+    api
 };

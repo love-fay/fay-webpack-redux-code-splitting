@@ -24,7 +24,7 @@ let local = {
     emptyText: '暂无数据',
 };
 
-const UserTable = ({uumsUser, userData, refresh}) => {
+const UserTable = ({uumsUser, userData}) => {
         const {type, params, message} = uumsUser;
         let dataSource = [];
         let pagination = {};
@@ -48,7 +48,7 @@ const UserTable = ({uumsUser, userData, refresh}) => {
                 local.emptyText = '暂无数据';
                 break;
         }
-        console.log('appTable');
+        console.log('uumsUserrender');
         return (
             <Table rowKey={(record) => record.id}
                    {...tableState}
@@ -60,8 +60,9 @@ const UserTable = ({uumsUser, userData, refresh}) => {
 };
 
 const mapStateToProps = (state) => {
+    console.log('uumsUser');
     return {
-        uumsUser: selectVisibleUserPage(state),
+        uumsUser: state.uumsUser,
     };
 };
 
@@ -110,11 +111,10 @@ const mapDispatchToProps = (dispatch) => {
     const refresh = (params) => {
         dispatch(findUserForPage(params));
     };
-
+    console.log('appTable');
     refresh({number: 0, size: 20});
 
     return {
-        refresh: refresh,
         userData: userData
     };
 };

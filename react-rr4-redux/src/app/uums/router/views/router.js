@@ -19,6 +19,18 @@ class UumsRouter extends Component{
         }
     }
 
+    /**
+     * 这里的注释是为了提醒在实际项目中会出现因context的改变导致部门页面渲染不可控的情况
+     * 下面是示例伪代码
+     */
+    // shouldComponentUpdate(nextProps) {
+    //     const pathname = this.props.location.pathname;
+    //     const nextPathname = nextProps.location.pathname;
+    //     const type = this.props.uums.type;
+    //     const nextType = nextProps.uums.type;
+    //     return !(pathname === nextPathname && type === nextType);
+    // }
+
     render(){
         const {getChildrenMatchUrl} = this.props;
         if (user.isLogin()) {

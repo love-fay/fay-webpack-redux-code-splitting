@@ -4,31 +4,18 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {findAppForPageFetch, findAppForPageSuccess, findAppForPageError} from './actions';
 import {FIND_APP_FOR_PAGE} from './actionTypes';
+import {api} from '../resource';
 
 function appPage() {
     /**
-     * 异步请求省略
+     * 伪异步请求
      */
-    return {
-        "data":{
-            "pageData":[{
-                "id":"1",
-                "name":"系统一",
-                "sn":"system1",
-                "url":"http://www.system1.com",
-                "description":"系统一"
-            },{
-                "id":"2",
-                "name":"系统二",
-                "sn":"system2",
-                "url":"http://www.system2.com",
-                "description":"系统二"
-            }],
-            "currentPage":0,
-            "totalPage":1,
-            "pageSize":20,
-            "totalRows":2
-        },"success":true};
+    const promise = api.app.findForPage();
+    return promise.then((res) => res.json())
+        .then((res) => res)
+        .catch( (err) => {
+            throw err;
+        });
 }
 
 function* fetchAppPage(data) {
@@ -36,6 +23,7 @@ function* fetchAppPage(data) {
     try {
         yield put(findAppForPageFetch());
         const result = yield call(appPage);
+        console.log(result);
         yield put(findAppForPageSuccess(result, params));
     } catch (e) {
         yield put(findAppForPageError(e, params));
