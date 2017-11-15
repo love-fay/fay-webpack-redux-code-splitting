@@ -4,8 +4,8 @@
 import appSagas from './sagas';
 import appReducer from './reducer';
 import view from './views/app';
-import {ReducerNames} from '../../constants';
-const appName = ReducerNames.uums.app;
+import {UumsReducerNames} from '../constants';
+const appName = UumsReducerNames.app;
 const reducer = {
     [appName]: appReducer
 };

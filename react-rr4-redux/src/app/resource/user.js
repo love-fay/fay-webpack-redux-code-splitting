@@ -13,15 +13,13 @@ const isLogin = () => {
 };
 
 const logout = (history, pathname) => {
-    FayUc.logout(() => {
-        history.push('/login?returnPath=' + pathname, {nextPathname: pathname});
-    });
+    cookie.remove('current-user');
+    history.push('/login?returnPath=' + pathname, {nextPathname: pathname});
 };
 
 const goToLogin = (history, pathname) => {
-    FayUc.logout(() => {
-        history.push('/login?returnPath=' + pathname, {nextPathname: pathname});
-    });
+    cookie.remove('current-user');
+    history.push('/login?returnPath=' + pathname, {nextPathname: pathname});
 };
 
 export {loginUser, isLogin, logout, goToLogin};

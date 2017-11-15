@@ -3,16 +3,13 @@
  */
 
 import React from 'react';
-
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import 'FayAntd/row/style/index.js';
 import 'FayAntd/col/style/index.js';
-
 import {NavTop, NavLeft} from '../../navigation';
 import './style.css';
 import PropTypes from 'prop-types';
-
 
 const Layout12 = ({children}) => {
     return (

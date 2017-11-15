@@ -5,16 +5,16 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanPlugin = require('clean-webpack-plugin'); // 清理文件夹
+const CleanPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 
-    entry: ['babel-polyfill', __dirname + '/src/index.js'], // 已多次提及的唯一入口文件
+    entry: ['babel-polyfill', __dirname + '/src/index.js'],
     output: {
-        path: __dirname + '/dist/pro', // 打包后的文件存放的地方
-        filename: 'js/[name]-[hash:8].js', // 打包后输出文件的文件名
+        path: __dirname + '/dist/pro',
+        filename: 'js/[name]-[hash:8].js',
         chunkFilename: 'js/[name]-[id].[hash:8].bundle.js',
     },
 
@@ -128,7 +128,6 @@ module.exports = {
     },
 
     plugins: [
-        // 清空输出目录
         new CleanPlugin(['dist/pro'], {
             'root': __dirname,
             'verbose': true,
@@ -155,7 +154,6 @@ module.exports = {
         new CopyWebpackPlugin([
             {from: __dirname + '/src/assets', to: __dirname + '/dist/pro/assets'},
             {from: __dirname + '/src/favicon.ico', to: __dirname + '/dist/pro/favicon.ico'},
-            {from: __dirname + '/src/faylogin.html', to: __dirname + '/dist/pro/faylogin.html'},
         ]),
     ],
 };

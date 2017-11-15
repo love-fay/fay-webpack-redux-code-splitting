@@ -4,17 +4,13 @@
 import React from 'react';
 import Card from 'antd/lib/card';
 import 'FayAntd/card/style/index.js';
-import style from './style.css';
 import UserTable from './userTable';
-import UserSearch from './userSearch';
 
 export default () => {
+    console.log('app');
     return (
         <Card>
-            <UserSearch />
-            <div className={style.userTable}>
-                <UserTable />
-            </div>
+            <UserTable />
         </Card>
     );
 }

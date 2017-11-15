@@ -48,10 +48,11 @@ const UserTable = ({uumsUser, userData, refresh}) => {
                 local.emptyText = '暂无数据';
                 break;
         }
+        console.log('appTable');
         return (
             <Table rowKey={(record) => record.id}
                    {...tableState}
-                   columns={UserTableColumns(() => refresh(params))}
+                   columns={UserTableColumns()}
                    locale={local}
                    dataSource={dataSource}
                    pagination={pagination} />

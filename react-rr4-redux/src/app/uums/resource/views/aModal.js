@@ -82,25 +82,26 @@ class AModal extends Component {
 
     componentDidMount () {
         document.addEventListener('mousemove',(e)=>{this.onMouseMove(e);},false);
-        document.addEventListener('mouseup',(e)=>{this.onMouseUp(e);},false);
     };
 
     render () {
         return (
             <a href="javascript:void(0);" type="ghost" size="default" onClick={() => this.setModal(true)}>
                 {this.props.text}
-                <Modal key={this.state.newKey} title={<a onMouseDown={this.onMouseDown}>{this.props.title}</a>}
+                <Modal key={this.state.newKey} title={<a onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp}>{this.props.title}</a>}
                        width={this.state.width}
                        visible={this.state.modal}
                        onCancel={() => this.setModal(false)}
                        footer={[]}
                        style={this.state.style}
                 >
-                    <div>
-                        {React.cloneElement(this.props.children, {
-                            setModal: this.setModal,
-                        })}
-                    </div>
+                    {
+                        this.state.modal
+                            ? React.cloneElement(this.props.children, {
+                                setModal: this.setModal,
+                            })
+                            : ''
+                    }
                 </Modal>
             </a>
         );
@@ -108,7 +109,6 @@ class AModal extends Component {
 
     componentWillUnmount () {
         document.removeEventListener('mousemove',(e)=>{this.onMouseMove(e);},false);
-        document.removeEventListener('mouseup',(e)=>{this.onMouseUp(e);},false);
     }
 }
 

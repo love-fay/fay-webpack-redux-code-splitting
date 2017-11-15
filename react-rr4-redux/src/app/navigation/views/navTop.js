@@ -64,7 +64,7 @@ class NavTop extends Component {
                   id="nav-top-menu"
             >
                 <Menu.Item key="/">
-                    <div className={style.log + ' waves-effect'}>
+                    <div className={style.log}>
                         <img width="30px" src="assets/images/logo/80x80.png" className={style.logImg} />
                         {appName}
                     </div>
@@ -72,14 +72,14 @@ class NavTop extends Component {
                 {loginUser ?
                     [
                         <Menu.Item key="/prevent1" style={{float: 'right', marginRight: '50px'}}>
-                            <div className={style.register + ' waves-effect'} onClick={(e) => {this.logout(e);}}>退出</div>
+                            <div className={style.register} onClick={(e) => {this.logout(e);}}>退出</div>
                         </Menu.Item>,
                         <Menu.Item key="/prevent2" style={{float: 'right'}}>
-                            <div className={style.userInfo + ' waves-effect'}>{loginUser.nickname}</div>
+                            <div className={style.userInfo}>{loginUser.nickname}</div>
                         </Menu.Item>
                     ] :
                     <Menu.Item key="/prevent3" style={{float: 'right', marginRight: '50px'}}>
-                        <div className={style.login + ' waves-effect'} onClick={(e) => {this.changePath(e, '/login');}}>登录</div>
+                        <div className={style.login} onClick={(e) => {this.changePath(e, '/login');}}>登录</div>
                     </Menu.Item>
                 }
             </Menu>

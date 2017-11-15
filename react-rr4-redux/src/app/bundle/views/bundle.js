@@ -16,7 +16,6 @@ class Bundle extends Component {
     };
 
     state = {
-        // short for "module" but that's a keyword in js, so "mod"
         mod: null,
     };
 
@@ -42,7 +41,6 @@ class Bundle extends Component {
         props.load(this.context.store, (mod) => {
             if (this._isMounted) {
                 this.setState({
-                    // handle both es imports and cjs
                     mod: mod['default'] ? mod['default'] : mod,
                 });
             }
@@ -50,7 +48,7 @@ class Bundle extends Component {
     }
 
     render () {
-        return this.state.mod ? this.props.children(this.state.mod) : <div></div>;
+        return this.state.mod ? this.props.children(this.state.mod) : <div>组件加载中...</div>;
     }
 }
 

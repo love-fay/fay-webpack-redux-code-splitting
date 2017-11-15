@@ -23,6 +23,7 @@ import 'FayAntd/spin/style/index.js';
 import 'FayAntd/alert/style/index.js';
 import {connect} from 'react-redux';
 import {appName} from '../../appInfo';
+import cookie from 'react-cookie';
 
 class LoginForm extends Component {
 
@@ -55,17 +56,10 @@ class LoginForm extends Component {
         }
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                if (typeof (FayUc) === 'object') {
-                    this.setState({loading: true});
-                    FayUc.login(
-                        {username: values.userName, password: values.password, remember: values.remember},
-                        history, nextPathname, values.remember, (loginMessage) => {
-                            if(loginMessage && loginMessage.err){
-                                this.setState({showMessage: 'block', message: loginMessage.err, messageType: 'error', loading: false});
-                            }
-                        }
-                    );
-                }
+                this.setState({loading: true});
+                const user = {username: values.userName, password: values.password, nickname: '爱死费崇政'};
+                cookie.save('current-user', user, values.remember ? {maxAge: ''} : undefined);
+                history.push(nextPathname, null);
             }
         });
     };
@@ -84,7 +78,6 @@ class LoginForm extends Component {
                                 {getFieldDecorator('userName', {
                                     rules: [
                                         { required: true, message: '请输入您的用户名!' },
-                                        {/* { required: true, pattern: /^[a-zA-Z][a-zA-Z0-9_]{5,15}$/, message: '由数字、字母或下划线组成，必须是6到16位且以字母为首!' }*/},
                                     ],
                                 })(
                                     <Input addonBefore={<Icon type="user" />} placeholder="用户名" />
@@ -107,11 +100,9 @@ class LoginForm extends Component {
                                 })(
                                     <Checkbox>记住我</Checkbox>
                                 )}
-                                {/* <a className={style.loginFormForgot}>忘记密码</a>*/}
                                 <Button type="primary" htmlType="submit" className={style.loginFormButton}>
                                     登录
                                 </Button>
-                                {/* 或者 <a>立即注册!</a>*/}
                             </FormItem>
                         </Form>
                     </Card>

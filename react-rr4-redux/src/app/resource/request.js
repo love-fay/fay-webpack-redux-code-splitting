@@ -44,9 +44,10 @@ const promise = (req) => {
                 fetch(req).then( (res) => {
                     const status = res.status;
                     if (status === 4011) {
-                        FayUc.logout(() => {
-                            window.location.href = '/login';
-                        });
+                        console.log(res);
+                        // FayUc.logout(() => {
+                        //     window.location.href = '/login';
+                        // });
                     }
                     resolve(res);
                     }).catch( (err) => {

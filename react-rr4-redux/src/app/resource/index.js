@@ -1,9 +1,7 @@
 /**
  * Created by feichongzheng on 17/9/28.
  */
-import * as request from './request';
 import * as user from './user';
-import log from './log';
-import * as date from './date';
+import * as request from './request';
 
-export {request, user, log, date};
+export {user, request};
