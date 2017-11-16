@@ -4,19 +4,19 @@
 import userSagas from './sagas';
 import userReducer from './reducer';
 import view from './views/user';
-// import {reducer as authReducer, sagas as authSagas} from '../resource/auth';
+// import {reducer as privilegeReducer, sagas as privilegeSagas} from '../resource/privilege';
 import {UumsReducerNames} from '../constants';
 const userName = UumsReducerNames.user;
-// const authName = ReducerNames.uums.auth;
+// const privilegeName = UumsReducerNames.privilege;
 
 const reducer = {
     [userName]: userReducer
-    // [authName]: authReducer
+    // [privilegeName]: privilegeReducer
 };
 
 const sagas = {
     [userName]: userSagas
-    // [authName]: authSagas
+    // [privilegeName]: privilegeSagas
 };
 
 export {sagas, reducer, view};
