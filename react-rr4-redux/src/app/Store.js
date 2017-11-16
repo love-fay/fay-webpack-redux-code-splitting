@@ -9,10 +9,10 @@ import createSagaMiddleware from 'redux-saga';
 const history = createHistory();
 const rMiddleware = routerMiddleware(history);
 
-import Perf from 'react-addons-perf';
-
+// import Perf from 'react-addons-perf';
+//
 const win = window;
-win.Perf = Perf;
+// win.Perf = Perf;
 
 export const sagaMiddleware = createSagaMiddleware();
 
