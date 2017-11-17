@@ -28,12 +28,12 @@ class NavLeft extends Component {
         const {history} = this.props;
         let key = e.key;
         if (key !== undefined) {
+            pathname = key;
             history.push(key, null);
         }
     };
 
     render () {
-        console.log('navleft');
         const {openKeys} = this.state;
         return (
             <Menu onClick={this.handleClick}

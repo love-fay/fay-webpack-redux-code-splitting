@@ -7,7 +7,6 @@ import 'FayAntd/card/style/index.js';
 import UserTable from './userTable';
 
 export default () => {
-    console.log('app');
     return (
         <Card>
             <UserTable />

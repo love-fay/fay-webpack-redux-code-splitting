@@ -1,9 +1,9 @@
 /**
- * Created by feichongzheng on 17/9/25.
+ * Created by feichongzheng on 17/9/27.
  */
 import React from 'react';
 import Bundle from '../../bundle/views/bundle';
-import load from 'bundle-loader?lazy&name=[UumsRouter]!./lazy';
+import load from 'bundle-loader?lazy&name=[E401D3]!./lazy';
 
 const view = (props) => {
     return (

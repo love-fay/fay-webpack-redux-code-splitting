@@ -26,33 +26,29 @@ const storeEnhancers = compose(
 import createReducer from './reducers';
 
 export function injectAsyncStore(store, asyncReducers, sagas) {
-    injectAsyncReducers(store, asyncReducers);
-    injectAsyncSagas(store, sagas);
+    asyncReducers && injectAsyncReducers(store, asyncReducers);
+    sagas && injectAsyncSagas(store, sagas);
 }
 
-export function injectAsyncReducers(store, asyncReducers) {
+function injectAsyncReducers(store, asyncReducers) {
     let flag = false;
-    if (asyncReducers) {
-        for (let key in asyncReducers) {
-            if(Object.prototype.hasOwnProperty.call(asyncReducers, key)) {
-                if (!store.asyncReducers[key]) {
-                    store.asyncReducers[key] = asyncReducers[key];
-                    flag = true;
-                }
+    for (let key in asyncReducers) {
+        if(Object.prototype.hasOwnProperty.call(asyncReducers, key)) {
+            if (!store.asyncReducers[key]) {
+                store.asyncReducers[key] = asyncReducers[key];
+                flag = true;
             }
         }
-        flag && store.replaceReducer(createReducer(store.asyncReducers));
     }
+    flag && store.replaceReducer(createReducer(store.asyncReducers));
 }
 
-export function injectAsyncSagas(store, sagas) {
-    if (sagas) {
-        for (let key in sagas) {
-            if(Object.prototype.hasOwnProperty.call(sagas, key)) {
-                if (!store.asyncSagas[key]) {
-                    store.asyncSagas[key] = sagas[key];
-                    store.sagaMiddleware.run(sagas[key]);
-                }
+function injectAsyncSagas(store, sagas) {
+    for (let key in sagas) {
+        if(Object.prototype.hasOwnProperty.call(sagas, key)) {
+            if (!store.asyncSagas[key]) {
+                store.asyncSagas[key] = sagas[key];
+                store.sagaMiddleware.run(sagas[key]);
             }
         }
     }

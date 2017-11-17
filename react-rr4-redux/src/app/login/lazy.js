@@ -1,21 +1,6 @@
 /**
- * Created by feichongzheng on 17/10/24.
+ * Created by feichongzheng on 17/9/25.
  */
-import React from 'react';
-import Bundle from '../bundle/views/bundle';
-import load from 'bundle-loader?lazy&name=[Login]!./bundle';
+import view from './views/login';
 
-export default (props) => {
-    return (
-        <Bundle load={(store, cb) => {
-            load((target) => {
-                const {view} = target;
-                cb(view);
-            })
-        }}>
-            {(View) => {
-                return <View {...props}/>
-            }}
-        </Bundle>
-    );
-};
+export {view};

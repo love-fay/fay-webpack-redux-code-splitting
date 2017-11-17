@@ -1,23 +1,22 @@
 /**
- * Created by feichongzheng on 17/10/24.
+ * Created by feichongzheng on 17/9/25.
  */
-import React from 'react';
-import Bundle from '../../bundle/views/bundle';
-import load from 'bundle-loader?lazy&name=[User]!./bundle';
-import {injectAsyncStore} from '../../Store';
+import userSagas from './sagas';
+import userReducer from './reducer';
+import view from './views/user';
+// import {reducer as privilegeReducer, sagas as privilegeSagas} from '../resource/privilege';
+import {UumsReducerNames} from '../constants';
+const userName = UumsReducerNames.user;
+// const privilegeName = UumsReducerNames.privilege;
 
-export default (props) => {
-    return (
-        <Bundle load={(store, cb) => {
-            load((target) => {
-                const {reducer, view, sagas} = target;
-                injectAsyncStore(store, reducer, sagas);
-                cb(view);
-            })
-        }}>
-            {(View) => {
-                return <View {...props}/>
-            }}
-        </Bundle>
-    );
+const reducer = {
+    [userName]: userReducer
+    // [privilegeName]: privilegeReducer
 };
+
+const sagas = {
+    [userName]: userSagas
+    // [privilegeName]: privilegeSagas
+};
+
+export {sagas, reducer, view};

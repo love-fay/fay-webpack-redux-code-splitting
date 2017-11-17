@@ -20,16 +20,7 @@ export default class Main extends Component {
                     <Route path="/" getComponent={this.getLayout12} >
                         <IndexRoute getComponent={this.getHome} onEnter={this.requireAuth}/>
                         <Route path="app" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="org" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="group" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="role" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="position" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
                         <Route path="user" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="menuResource" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="controllerResource" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="unifyManage" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="orgRole" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
-                        <Route path="person" getComponent={this.getUumsComponent} onEnter={this.requireAuth}/>
                     </Route>
                     <Route path="login" getComponent={this.getComponent}/>
                     <Route path="504" getComponent={this.getComponent} />

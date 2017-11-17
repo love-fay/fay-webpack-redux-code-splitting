@@ -4,11 +4,11 @@
 import React, {Component} from 'react';
 import Menu from 'antd/lib/menu';
 import 'FayAntd/menu/style/index.js';
-import style from './navTop.css';
+import style from './style.css';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
-import {appName} from '../../appInfo';
-import {user} from '../../resource';
+import {appName} from '../../../appInfo';
+import {user} from '../../../resource';
 
 let pathname;
 

@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {injectAsyncStore} from '../../Store';
 
 class Bundle extends Component {
 
@@ -38,10 +39,12 @@ class Bundle extends Component {
         this.setState({
             mod: null,
         });
-        props.load(this.context.store, (mod) => {
+        props.load((mod) => {
+            const {reducer, view, sagas} = mod;
+            injectAsyncStore(this.context.store, reducer, sagas);
             if (this._isMounted) {
                 this.setState({
-                    mod: mod['default'] ? mod['default'] : mod,
+                    mod: view['default'] ? view['default'] : view,
                 });
             }
         });

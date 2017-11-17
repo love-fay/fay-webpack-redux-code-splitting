@@ -48,7 +48,6 @@ const UserTable = ({uumsUser, userData}) => {
                 local.emptyText = '暂无数据';
                 break;
         }
-        console.log('uumsUserrender');
         return (
             <Table rowKey={(record) => record.id}
                    {...tableState}

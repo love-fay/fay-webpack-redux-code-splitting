@@ -23,7 +23,6 @@ function* fetchAppPage(data) {
     try {
         yield put(findAppForPageFetch());
         const result = yield call(appPage);
-        console.log(result);
         yield put(findAppForPageSuccess(result, params));
     } catch (e) {
         yield put(findAppForPageError(e, params));
