@@ -1,4 +1,4 @@
-# fay-react-redux-code-spliting
+# fay-webpack-redux-code-spliting
 webpack/redux+webpack实现code spliting（按需加载）
 
 > 三种按需加载的方式，分别在react、react-rr4、react-rr4-redux中。
